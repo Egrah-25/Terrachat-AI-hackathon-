@@ -1,10 +1,11 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🌱 TerraChat AI - Land Health Assistant</title>
     <style>
+        /* [Keep all your existing CSS - it's perfect!] */
         * {
             margin: 0;
             padding: 0;
@@ -128,7 +129,6 @@
             opacity: 0.8;
         }
 
-        /* Loading animation */
         .typing-indicator {
             display: inline-block;
         }
@@ -167,16 +167,14 @@
         <div class="chat-container" id="chatContainer">
             <div class="message ai-message">
                 <strong>🌍 TerraBot</strong>
-                Welcome! I'm here to help you analyze land health and suggest regenerative solutions. 
+                Welcome! I'm your AI Land Regeneration expert. I can help with:
+                • Soil health analysis & improvement strategies
+                • Erosion control and prevention methods  
+                • Sustainable farming practices
+                • Reforestation and biodiversity planning
+                • Climate resilience techniques
 
-                You can ask me about:
-                • Soil degradation issues
-                • Sustainable farming practices  
-                • Reforestation recommendations
-                • Climate resilience strategies
-                • Or describe your specific land challenge!
-
-                What would you like to discuss today?
+                Tell me about your land challenges!
             </div>
         </div>
 
@@ -191,24 +189,142 @@
     </div>
 
     <script>
-        // Sample AI responses for different topics
-        const aiResponses = {
-            soil: "Based on your description, I'm detecting potential soil health issues. Consider these regenerative approaches:\n\n• **Cover Cropping**: Legumes like clover can fix nitrogen\n• **Compost Application**: Improves soil structure and nutrients\n• **Reduced Tillage**: Preserves soil microbiome\n• **Crop Rotation**: Prevents nutrient depletion\n\nCould you share more details about your specific soil type or region?",
-            
-            erosion: "Erosion control is crucial for land regeneration! Here are immediate actions:\n\n• **Plant Windbreaks**: Trees/shrubs to reduce wind impact\n• **Contour Farming**: Follow land contours to slow water flow\n• **Terracing**: For sloped areas to prevent runoff\n• **Mulching**: Organic mulch protects topsoil\n\nWhat's the slope and vegetation cover like in your area?",
-            
-            general: "That's a great starting point! For comprehensive land regeneration, consider:\n\n🌱 **Soil Health**: Test soil pH and organic matter\n🌳 **Biodiversity**: Introduce native plant species\n💧 **Water Management**: Rainwater harvesting systems\n📊 **Monitoring**: Regular land assessment tracking\n\nCould you specify what aspect you'd like to focus on first?"
+        // SMART FALLBACK RESPONSES - Feels like real AI!
+        const knowledgeBase = {
+            soil: {
+                dry: `🌵 **Dry Soil Analysis**: 
+
+Your soil needs moisture retention! Here's your action plan:
+
+💧 **Water Management**:
+• Install drip irrigation for efficient water use
+• Add organic mulch (straw, wood chips) to reduce evaporation
+• Consider rainwater harvesting systems
+
+🌱 **Soil Amendments**:
+• Mix in 2-3 inches of compost to improve water retention
+• Add vermiculite or coconut coir to sandy soils
+• Plant drought-resistant cover crops like clover or vetch
+
+📊 **Monitoring**: Check soil moisture weekly. Ideal soil should feel like a wrung-out sponge.`,
+
+                clay: `🟫 **Clay Soil Solutions**:
+
+Clay soil can be challenging but very fertile! Here's how to improve it:
+
+🔄 **Aeration & Drainage**:
+• Add gypsum (1kg per 10 sqm) to break up clay particles
+• Mix in coarse sand and organic matter
+• Create raised beds for better drainage
+
+🌿 **Plant Selection**:
+• Grow clay-loving plants: daylilies, hostas, asters
+• Use deep-rooted cover crops like daikon radish
+• Avoid working soil when wet to prevent compaction
+
+📅 **Long-term Strategy**: Add 2-3 inches of compost annually. It takes 1-2 seasons to see major improvement!`,
+
+                sandy: `🏖️ **Sandy Soil Enhancement**:
+
+Sandy soil drains well but lacks nutrients. Let's fix that:
+
+💪 **Nutrient Retention**:
+• Add 3-4 inches of compost or well-rotted manure
+• Use biochar to improve nutrient holding capacity
+• Apply organic fertilizers more frequently but lightly
+
+🌳 **Planting Strategy**:
+• Perfect for root vegetables: carrots, potatoes, radishes
+• Use drought-tolerant native plants
+• Implement heavy mulching to retain moisture
+
+🎯 **Quick Fix**: Plant legume cover crops to naturally add nitrogen while building organic matter.`
+            },
+
+            erosion: {
+                water: `💧 **Water Erosion Control**:
+
+Immediate actions to stop soil loss:
+
+🛡️ **Structural Solutions**:
+• Build terraces or contour swales on slopes
+• Install French drains for proper water channeling
+• Use erosion control blankets on bare soil
+
+🌿 **Vegetative Measures**:
+• Plant deep-rooted grasses like vetiver
+• Create buffer strips with native shrubs
+• Use jute netting on steep areas while plants establish
+
+📝 **Maintenance**: Avoid bare soil. Always keep ground covered with plants or mulch.`,
+
+                wind: `💨 **Wind Erosion Prevention**:
+
+Protect your soil from wind damage:
+
+🌳 **Windbreaks**:
+• Plant tree rows perpendicular to prevailing winds
+• Use fast-growing shrubs like willow or seabuckthorn
+• Create living fences with dense vegetation
+
+🛡️ **Soil Protection**:
+• Apply straw mulch and tackify with biodegradable glue
+• Use cover crops like winter rye for year-round coverage
+• Leave crop residues on field during windy seasons
+
+📊 **Assessment**: Monitor wind patterns and protect the most vulnerable areas first.`
+            },
+
+            general: `🌍 **Land Regeneration Framework**:
+
+For comprehensive land healing, consider this approach:
+
+🔍 **Assessment Phase**:
+1. Test soil pH and nutrient levels
+2. Map water flow patterns and erosion areas
+3. Identify native plant species for your region
+
+🛠️ **Implementation**:
+• Start with small pilot areas to test methods
+• Combine multiple techniques for best results
+• Document changes with photos and notes
+
+📈 **Monitoring**: Track vegetation cover, soil quality, and biodiversity quarterly. Even small improvements matter!`,
+
+            plants: `🌿 **Regenerative Planting Guide**:
+
+**Nitrogen Fixers** (Improve soil fertility):
+• Clover, alfalfa, beans, peas, locust trees
+
+**Deep Rooters** (Break compacted soil):
+• Daikon radish, comfrey, sweet potatoes, trees
+
+**Ground Covers** (Prevent erosion):
+• Creeping thyme, periwinkle, native grasses
+
+**Quick Tips**: Always choose native species when possible. Plant in diversity - monocultures are vulnerable!`
         };
 
-        function detectTopic(message) {
-            const lowerMessage = message.toLowerCase();
-            if (lowerMessage.includes('soil') || lowerMessage.includes('dirt') || lowerMessage.includes('clay') || lowerMessage.includes('sand')) {
-                return 'soil';
-            } else if (lowerMessage.includes('erosion') || lowerMessage.includes('wash away') || lowerMessage.includes('runoff')) {
-                return 'erosion';
-            } else {
-                return 'general';
-            }
+        function analyzeMessage(message) {
+            const lowerMsg = message.toLowerCase();
+            
+            // Soil type detection
+            if (lowerMsg.includes('dry') || lowerMsg.includes('arid') || lowerMsg.includes('drought')) 
+                return knowledgeBase.soil.dry;
+            if (lowerMsg.includes('clay') || lowerMsg.includes('heavy') || lowerMsg.includes('compact')) 
+                return knowledgeBase.soil.clay;
+            if (lowerMsg.includes('sandy') || lowerMsg.includes('light') || lowerMsg.includes('drain')) 
+                return knowledgeBase.soil.sandy;
+            
+            // Erosion detection
+            if (lowerMsg.includes('erosion') || lowerMsg.includes('wash away') || lowerMsg.includes('runoff')) 
+                return lowerMsg.includes('wind') ? knowledgeBase.erosion.wind : knowledgeBase.erosion.water;
+            
+            // Plant questions
+            if (lowerMsg.includes('plant') || lowerMsg.includes('crop') || lowerMsg.includes('tree') || lowerMsg.includes('grow')) 
+                return knowledgeBase.plants;
+            
+            return knowledgeBase.general;
         }
 
         async function sendMessage() {
@@ -220,10 +336,7 @@
             if (!message) return;
 
             // Add user message
-            const userMessageDiv = document.createElement('div');
-            userMessageDiv.className = 'message user-message';
-            userMessageDiv.innerHTML = `<strong>👤 You</strong>${message}`;
-            chatContainer.appendChild(userMessageDiv);
+            addMessage('user', message);
 
             // Clear input and disable button
             userInput.value = '';
@@ -236,19 +349,16 @@
             chatContainer.appendChild(typingDiv);
             chatContainer.scrollTop = chatContainer.scrollHeight;
 
-            // Simulate AI thinking time
+            // Simulate AI processing
             setTimeout(() => {
                 // Remove typing indicator
                 chatContainer.removeChild(typingDiv);
 
-                // Add AI response
-                const topic = detectTopic(message);
-                const aiResponse = aiResponses[topic];
+                // Get smart response
+                const response = analyzeMessage(message);
                 
-                const aiMessageDiv = document.createElement('div');
-                aiMessageDiv.className = 'message ai-message';
-                aiMessageDiv.innerHTML = `<strong>🌍 TerraBot</strong>${aiResponse.replace(/\n/g, '<br>')}`;
-                chatContainer.appendChild(aiMessageDiv);
+                // Add AI response
+                addMessage('ai', response.replace(/\n/g, '<br>'));
 
                 // Re-enable button and scroll
                 sendBtn.disabled = false;
@@ -256,7 +366,16 @@
             }, 2000);
         }
 
-        // Allow sending message with Enter key (but not Shift+Enter)
+        function addMessage(sender, text) {
+            const chatContainer = document.getElementById('chatContainer');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}-message`;
+            messageDiv.innerHTML = `<strong>${sender === 'user' ? '👤 You' : '🌍 TerraBot'}</strong>${text}`;
+            chatContainer.appendChild(messageDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        // Allow sending message with Enter key
         document.getElementById('userInput').addEventListener('keypress', function(e) {
             if (e.key === 'Enter' && !e.shiftKey) {
                 e.preventDefault();
@@ -265,4 +384,4 @@
         });
     </script>
 </body>
-</html>
+</html>           
