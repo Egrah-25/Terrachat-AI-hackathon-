@@ -1,7 +1,7 @@
 🌱 TerraChat AI - Land Regeneration Assistant
 
 [![Live Demo]
-https://161ff845-91ce-4a92-aff1-5281b67d24a5-00-1j7ipbrm93hww.spock.replit.dev/
+terrachatai.netlify.app
 
 > AI-powered land health analysis and regenerative solutions for a greener planet
 
