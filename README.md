@@ -50,8 +50,8 @@ Example Queries:
 
 Component Technology
 Frontend HTML5, CSS3, JavaScript
-Platform Replit (Cloud IDE)
-Deployment Replit Dev Services
+Platform Netlify
+Deployment by Netlify dev services
 AI Logic Smart Knowledge-Based System
 Styling Custom CSS with Green Eco-Themes
 
