@@ -5,155 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🌱 TerraChat AI - Land Health Assistant</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-
-        .header {
-            background: linear-gradient(135deg, #2E8B57, #3CB371);
-            color: white;
-            padding: 30px;
-            text-align: center;
-        }
-
-        .header h1 {
-            font-size: 2.2em;
-            margin-bottom: 10px;
-        }
-
-        .header p {
-            opacity: 0.9;
-            font-size: 1.1em;
-        }
-
-        .chat-container {
-            height: 400px;
-            overflow-y: auto;
-            padding: 20px;
-            background: #f8f9fa;
-        }
-
-        .message {
-            margin: 15px 0;
-            padding: 15px;
-            border-radius: 15px;
-            max-width: 80%;
-            animation: fadeIn 0.3s ease-in;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .user-message {
-            background: #007bff;
-            color: white;
-            margin-left: auto;
-            border-bottom-right-radius: 5px;
-        }
-
-        .ai-message {
-            background: white;
-            border: 1px solid #e0e0e0;
-            margin-right: auto;
-            border-bottom-left-radius: 5px;
-        }
-
-        .input-area {
-            padding: 20px;
-            background: white;
-            border-top: 1px solid #eee;
-            display: flex;
-            gap: 10px;
-        }
-
-        #userInput {
-            flex: 1;
-            padding: 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-size: 16px;
-            resize: none;
-            transition: border-color 0.3s;
-        }
-
-        #userInput:focus {
-            outline: none;
-            border-color: #007bff;
-        }
-
-        button {
-            background: linear-gradient(135deg, #2E8B57, #3CB371);
-            color: white;
-            border: none;
-            padding: 15px 25px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            transition: transform 0.2s;
-        }
-
-        button:hover {
-            transform: translateY(-2px);
-        }
-
-        button:active {
-            transform: translateY(0);
-        }
-
-        .message strong {
-            display: block;
-            margin-bottom: 5px;
-            font-size: 0.9em;
-            opacity: 0.8;
-        }
-
-        .typing-indicator {
-            display: inline-block;
-        }
-
-        .typing-indicator span {
-            height: 8px;
-            width: 8px;
-            background: #999;
-            border-radius: 50%;
-            display: inline-block;
-            margin: 0 2px;
-            animation: typing 1.4s infinite;
-        }
-
-        .typing-indicator span:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .typing-indicator span:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-
-        @keyframes typing {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
+        .container { max-width: 800px; margin: 0 auto; background: white; border-radius: 15px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); overflow: hidden; }
+        .header { background: linear-gradient(135deg, #2E8B57, #3CB371); color: white; padding: 30px; text-align: center; }
+        .header h1 { font-size: 2.2em; margin-bottom: 10px; }
+        .chat-container { height: 400px; overflow-y: auto; padding: 20px; background: #f8f9fa; }
+        .message { margin: 15px 0; padding: 15px; border-radius: 15px; max-width: 80%; animation: fadeIn 0.3s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .user-message { background: #007bff; color: white; margin-left: auto; border-bottom-right-radius: 5px; }
+        .ai-message { background: white; border: 1px solid #e0e0e0; margin-right: auto; border-bottom-left-radius: 5px; }
+        .input-area { padding: 20px; background: white; border-top: 1px solid #eee; display: flex; gap: 10px; }
+        #userInput { flex: 1; padding: 15px; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 16px; resize: none; }
+        button { background: linear-gradient(135deg, #2E8B57, #3CB371); color: white; border: none; padding: 15px 25px; border-radius: 10px; cursor: pointer; font-size: 16px; font-weight: 600; }
+        button:hover { transform: translateY(-2px); }
+        .message strong { display: block; margin-bottom: 5px; font-size: 0.9em; opacity: 0.8; }
+        .typing-indicator { display: inline-block; }
+        .typing-indicator span { height: 8px; width: 8px; background: #999; border-radius: 50%; display: inline-block; margin: 0 2px; animation: typing 1.4s infinite; }
+        .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes typing { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
     </style>
 </head>
 <body>
@@ -162,207 +33,61 @@
             <h1>🌱 TerraChat AI</h1>
             <p>Your AI-Powered Land Health & Regeneration Assistant</p>
         </div>
-
         <div class="chat-container" id="chatContainer">
             <div class="message ai-message">
                 <strong>🌍 TerraBot</strong>
-                Welcome! I'm your AI Land Regeneration expert. I can help with:
-                • Soil health analysis & improvement strategies
-                • Erosion control and prevention methods  
-                • Sustainable farming practices
-                • Reforestation and biodiversity planning
-                • Climate resilience techniques
-
-                Tell me about your land challenges!
+                Welcome! I'm your AI Land Regeneration expert. I can help with soil health, erosion control, sustainable farming, and climate resilience!
             </div>
         </div>
-
         <div class="input-area">
-            <textarea 
-                id="userInput" 
-                placeholder="Describe your land, location, soil issues, or ask about regenerative practices..." 
-                rows="3"
-            ></textarea>
+            <textarea id="userInput" placeholder="Describe your land, soil issues, or ask about regenerative practices..." rows="3"></textarea>
             <button onclick="sendMessage()" id="sendBtn">Send</button>
         </div>
     </div>
 
     <script>
-        // SMART FALLBACK RESPONSES - Feels like real AI!
         const knowledgeBase = {
             soil: {
-                dry: `🌵 **Dry Soil Analysis**: 
-
-Your soil needs moisture retention! Here's your action plan:
-
-💧 **Water Management**:
-• Install drip irrigation for efficient water use
-• Add organic mulch (straw, wood chips) to reduce evaporation
-• Consider rainwater harvesting systems
-
-🌱 **Soil Amendments**:
-• Mix in 2-3 inches of compost to improve water retention
-• Add vermiculite or coconut coir to sandy soils
-• Plant drought-resistant cover crops like clover or vetch
-
-📊 **Monitoring**: Check soil moisture weekly. Ideal soil should feel like a wrung-out sponge.`,
-
-                clay: `🟫 **Clay Soil Solutions**:
-
-Clay soil can be challenging but very fertile! Here's how to improve it:
-
-🔄 **Aeration & Drainage**:
-• Add gypsum (1kg per 10 sqm) to break up clay particles
-• Mix in coarse sand and organic matter
-• Create raised beds for better drainage
-
-🌿 **Plant Selection**:
-• Grow clay-loving plants: daylilies, hostas, asters
-• Use deep-rooted cover crops like daikon radish
-• Avoid working soil when wet to prevent compaction
-
-📅 **Long-term Strategy**: Add 2-3 inches of compost annually. It takes 1-2 seasons to see major improvement!`,
-
-                sandy: `🏖️ **Sandy Soil Enhancement**:
-
-Sandy soil drains well but lacks nutrients. Let's fix that:
-
-💪 **Nutrient Retention**:
-• Add 3-4 inches of compost or well-rotted manure
-• Use biochar to improve nutrient holding capacity
-• Apply organic fertilizers more frequently but lightly
-
-🌳 **Planting Strategy**:
-• Perfect for root vegetables: carrots, potatoes, radishes
-• Use drought-tolerant native plants
-• Implement heavy mulching to retain moisture
-
-🎯 **Quick Fix**: Plant legume cover crops to naturally add nitrogen while building organic matter.`
+                dry: `🌵 **Dry Soil Analysis**: 💧 Install drip irrigation, add organic mulch, use rainwater harvesting. 🌱 Mix in compost, add vermiculite, plant drought-resistant cover crops.`,
+                clay: `🟫 **Clay Soil Solutions**: 🔄 Add gypsum, mix in coarse sand, create raised beds. 🌿 Grow clay-loving plants, use deep-rooted cover crops.`,
+                sandy: `🏖️ **Sandy Soil Enhancement**: 💪 Add 3-4 inches of compost, use biochar. 🌳 Perfect for root vegetables, use heavy mulching.`
             },
-
             erosion: {
-                water: `💧 **Water Erosion Control**:
-
-Immediate actions to stop soil loss:
-
-🛡️ **Structural Solutions**:
-• Build terraces or contour swales on slopes
-• Install French drains for proper water channeling
-• Use erosion control blankets on bare soil
-
-🌿 **Vegetative Measures**:
-• Plant deep-rooted grasses like vetiver
-• Create buffer strips with native shrubs
-• Use jute netting on steep areas while plants establish
-
-📝 **Maintenance**: Avoid bare soil. Always keep ground covered with plants or mulch.`,
-
-                wind: `💨 **Wind Erosion Prevention**:
-
-Protect your soil from wind damage:
-
-🌳 **Windbreaks**:
-• Plant tree rows perpendicular to prevailing winds
-• Use fast-growing shrubs like willow or seabuckthorn
-• Create living fences with dense vegetation
-
-🛡️ **Soil Protection**:
-• Apply straw mulch and tackify with biodegradable glue
-• Use cover crops like winter rye for year-round coverage
-• Leave crop residues on field during windy seasons
-
-📊 **Assessment**: Monitor wind patterns and protect the most vulnerable areas first.`
-            },
-
-            general: `🌍 **Land Regeneration Framework**:
-
-For comprehensive land healing, consider this approach:
-
-🔍 **Assessment Phase**:
-1. Test soil pH and nutrient levels
-2. Map water flow patterns and erosion areas
-3. Identify native plant species for your region
-
-🛠️ **Implementation**:
-• Start with small pilot areas to test methods
-• Combine multiple techniques for best results
-• Document changes with photos and notes
-
-📈 **Monitoring**: Track vegetation cover, soil quality, and biodiversity quarterly. Even small improvements matter!`,
-
-            plants: `🌿 **Regenerative Planting Guide**:
-
-**Nitrogen Fixers** (Improve soil fertility):
-• Clover, alfalfa, beans, peas, locust trees
-
-**Deep Rooters** (Break compacted soil):
-• Daikon radish, comfrey, sweet potatoes, trees
-
-**Ground Covers** (Prevent erosion):
-• Creeping thyme, periwinkle, native grasses
-
-**Quick Tips**: Always choose native species when possible. Plant in diversity - monocultures are vulnerable!`
+                water: `💧 **Water Erosion Control**: 🛡️ Build terraces, install French drains. 🌿 Plant deep-rooted grasses, create buffer strips.`,
+                wind: `💨 **Wind Erosion Prevention**: 🌳 Plant windbreak trees. 🛡️ Apply straw mulch, use cover crops.`
+            }
         };
 
         function analyzeMessage(message) {
             const lowerMsg = message.toLowerCase();
-            
-            // Soil type detection
-            if (lowerMsg.includes('dry') || lowerMsg.includes('arid') || lowerMsg.includes('drought')) 
-                return knowledgeBase.soil.dry;
-            if (lowerMsg.includes('clay') || lowerMsg.includes('heavy') || lowerMsg.includes('compact')) 
-                return knowledgeBase.soil.clay;
-            if (lowerMsg.includes('sandy') || lowerMsg.includes('light') || lowerMsg.includes('drain')) 
-                return knowledgeBase.soil.sandy;
-            
-            // Erosion detection
-            if (lowerMsg.includes('erosion') || lowerMsg.includes('wash away') || lowerMsg.includes('runoff')) 
-                return lowerMsg.includes('wind') ? knowledgeBase.erosion.wind : knowledgeBase.erosion.water;
-            
-            // Plant questions
-            if (lowerMsg.includes('plant') || lowerMsg.includes('crop') || lowerMsg.includes('tree') || lowerMsg.includes('grow')) 
-                return knowledgeBase.plants;
-            
-            return knowledgeBase.general;
+            if (lowerMsg.includes('dry') || lowerMsg.includes('arid')) return knowledgeBase.soil.dry;
+            if (lowerMsg.includes('clay') || lowerMsg.includes('heavy')) return knowledgeBase.soil.clay;
+            if (lowerMsg.includes('sandy') || lowerMsg.includes('light')) return knowledgeBase.soil.sandy;
+            if (lowerMsg.includes('erosion')) return lowerMsg.includes('wind') ? knowledgeBase.erosion.wind : knowledgeBase.erosion.water;
+            return `🌍 **Land Regeneration**: Test soil pH, map water flow, identify native plants. Start small pilot areas and track progress!`;
         }
 
-        async function sendMessage() {
+        function sendMessage() {
             const userInput = document.getElementById('userInput');
             const chatContainer = document.getElementById('chatContainer');
-            const sendBtn = document.getElementById('sendBtn');
-            
             const message = userInput.value.trim();
             if (!message) return;
 
-            // Add user message
             addMessage('user', message);
-
-            // Clear input and disable button
             userInput.value = '';
-            sendBtn.disabled = true;
-
-            // Add typing indicator
+            
             const typingDiv = document.createElement('div');
             typingDiv.className = 'message ai-message';
             typingDiv.innerHTML = `<strong>🌍 TerraBot</strong><div class="typing-indicator"><span></span><span></span><span></span></div>`;
             chatContainer.appendChild(typingDiv);
             chatContainer.scrollTop = chatContainer.scrollHeight;
 
-            // Simulate AI processing
             setTimeout(() => {
-                // Remove typing indicator
                 chatContainer.removeChild(typingDiv);
-
-                // Get smart response
                 const response = analyzeMessage(message);
-                
-                // Add AI response
                 addMessage('ai', response.replace(/\n/g, '<br>'));
-
-                // Re-enable button and scroll
-                sendBtn.disabled = false;
                 chatContainer.scrollTop = chatContainer.scrollHeight;
-            }, 2000);
+            }, 1500);
         }
 
         function addMessage(sender, text) {
@@ -371,10 +96,8 @@ For comprehensive land healing, consider this approach:
             messageDiv.className = `message ${sender}-message`;
             messageDiv.innerHTML = `<strong>${sender === 'user' ? '👤 You' : '🌍 TerraBot'}</strong>${text}`;
             chatContainer.appendChild(messageDiv);
-            chatContainer.scrollTop = chatContainer.scrollHeight;
         }
 
-        // Allow sending message with Enter key
         document.getElementById('userInput').addEventListener('keypress', function(e) {
             if (e.key === 'Enter' && !e.shiftKey) {
                 e.preventDefault();
@@ -384,4 +107,3 @@ For comprehensive land healing, consider this approach:
     </script>
 </body>
 </html>
-
